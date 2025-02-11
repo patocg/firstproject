@@ -1,8 +1,5 @@
-import Link from "next/link";
-
 function Home() {
-    return <h1><center>Em construção. Em breve novidades!!!<br></center></h1>
-        <img src="https://photos.google.com/share/AF1QipOVp3Tp-YpHOPlgCYpgARr6Lok400vMBfJYbcLMcSZ3gzfIKe-asd-tovve6Kk_cw/photo/AF1QipO1dcx-C1zibcOwzG58ZcnDy9qda2YdTuhyV3lK?key=RG0xUjFacWhKX1FQMW9saFhLMHVJQk9UcThvOEZB" alt="Alicates" width="300" height="200" style="border: 1px solid #000;"></h1>;
+    return <h1>Isso é insano <br><img src="https://lh3.googleusercontent.com/pw/AP1GczMyLSjKPQEs5FY7_nQ_ZWJp-B2JNKtYDqhihL8lRF9XniJqq94lDJfwjnktyENkHf3Smu99l8A6U_KKYfSptpkotfXSxP-z66cziGI7gohSl-ETe31clA4aUDqAojoZx8NnsJS0-8Un29pPM7OqIT87=w741-h1317-s-no-gm?authuser=0"></img></br></h1>;
 }
 
 export default Home;
