@@ -1,7 +1,7 @@
 function Home() {
   return (
     <h1>
-      <center>Em construção!!</center>
+      <title>Em construção</title>
       <center>Em breve novidades!!</center>
     </h1>
   );
