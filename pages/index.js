@@ -3,14 +3,12 @@ function Home() {
     <h1>
       <title>Em construção</title>
       <center>Em breve novidades!!</center>
-      <center>testando alteração em tempo real!</center>
     </h1>
   );
 }
 
-function adon(){
-console.log("testando")
-
-};
+function adon() {
+  console.log("testando");
+}
 
 export default Home;
