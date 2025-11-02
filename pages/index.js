@@ -1,5 +1,33 @@
-// src/pages/index.js ou src/App.js
 import React from "react";
+
+const socialLinks = [
+  {
+    href: "https://jnths.com.br/",
+    // Atualize para o melhor SVG publicada se necessário!
+    icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/internetexplorer.svg",
+    title: "WebSite"
+  },
+  {
+    href: "https://linkedin.com/in/jonathas-lima-cunha-60070839/",
+    icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg",
+    title: "LinkedIn"
+  },
+  {
+    href: "https://www.instagram.com/jonathas.cunha/",
+    icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg",
+    title: "Instagram"
+  },
+  {
+    href: "https://github.com/patocg",
+    icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg",
+    title: "GitHub"
+  },
+  {
+    href: "https://www.facebook.com/jonathas.cunha/",
+    icon: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg",
+    title: "Facebook"
+  },
+];
 
 export default function Home() {
   return (
@@ -13,14 +41,48 @@ export default function Home() {
           <img src="https://komarev.com/ghpvc/?username=patocg" alt="Profile Views" style={{ marginLeft: 12 }}/>
         </div>
 
+        {/* Ícones sociais com hover */}
+        <div style={{
+          display: "flex",
+          gap: 18,
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "16px 0"
+        }}>
+          {socialLinks.map(link => (
+            <a
+              key={link.title}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={link.title}
+              style={{
+                borderRadius: 8,
+                padding: 4,
+                transition: "background 0.2s",
+                background: "#f6f6f6"
+              }}
+              onMouseOver={e => e.currentTarget.style.background = "#e1edf7"}
+              onMouseOut={e => e.currentTarget.style.background = "#f6f6f6"}
+            >
+              <img
+                src={link.icon}
+                alt={link.title}
+                style={{
+                  width: 32,
+                  height: 32,
+                  transition: "filter 0.2s",
+                  filter: "grayscale(35%) brightness(1)"
+                }}
+                onMouseOver={e => e.currentTarget.style.filter = "none"}
+                onMouseOut={e => e.currentTarget.style.filter = "grayscale(35%) brightness(1)"}
+              />
+            </a>
+          ))}
+        </div>
+
         <p style={{ fontSize: "1.15rem", color: "#222", marginBottom: 0 }}>
           Tecnologia, código e inovação fazem parte da minha trajetória — brasileiro apaixonado por transformar ideias em soluções práticas!
-        </p>
-        <p style={{ margin: "18px 0", fontSize: "1rem" }}>
-          <a href="https://jnths.com.br/" target="_blank" rel="noopener noreferrer">🌐 Meu site</a> ·{" "}
-          <a href="https://linkedin.com/in/jonathas-lima-cunha-60070839/" target="_blank" rel="noopener noreferrer">💼 LinkedIn</a> ·{" "}
-          <a href="https://www.instagram.com/jonathas.cunha/" target="_blank" rel="noopener noreferrer">📸 Instagram</a> ·{" "}
-          <a href="https://github.com/patocg" target="_blank" rel="noopener noreferrer">🐙 GitHub</a>
         </p>
       </div>
 
@@ -62,13 +124,49 @@ export default function Home() {
 
         <h2>📊 Estatísticas & Linguagens</h2>
         <div style={{
-          display: "flex", flexWrap: "wrap", gap: 24, justifyContent: "center"
+          display: "flex", flexWrap: "wrap", gap: 24, justifyContent: "center", alignItems: "stretch"
         }}>
           <img src="https://github-readme-stats.vercel.app/api?username=patocg&show_icons=true&count_private=true&theme=dracula"
-               alt="Jonathas GitHub Stats" style={{ width: 420, maxWidth: "100%", borderRadius: 8 }}/>
+               alt="Jonathas GitHub Stats" style={{ width: 420, height: 220, borderRadius: 8, objectFit: "cover", background: "#222", flex: "1 1 320px" }}/>
           <img src="https://github-readme-stats.vercel.app/api/top-langs?username=patocg&show_icons=true&locale=pt-br&layout=compact&theme=dracula"
-               alt="Top Languages" style={{ width: 420, maxWidth: "100%", borderRadius: 8 }}/>
+               alt="Top Languages" style={{ width: 420, height: 220, borderRadius: 8, objectFit: "cover", background: "#222", flex: "1 1 320px" }}/>
         </div>
+
+        <hr style={{ margin: "32px 0" }}/>
+
+        {/* SEÇÃO DESTAQUES: Último reels do Instagram */}
+        <section style={{
+          background: "#fafafa",
+          borderRadius: 12,
+          boxShadow: "0 0 6px #eee",
+          margin: "32px auto",
+          maxWidth: 600,
+          padding: 24,
+          textAlign: "center"
+        }}>
+          <h2>🎥 Destaque no Instagram, só curtir e seguir.</h2>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            {/* Substitua o link pelo do seu Reels real */}
+            <iframe
+              src="https://www.instagram.com/reel/DQSpi68CZJD/embed"
+              width="340"
+              height="600"
+              style={{
+                maxWidth: "100%",
+                borderRadius: "10px",
+                border: "none",
+                boxShadow: "0 2px 10px #ddd"
+              }}
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              title="Reels Instagram"
+            ></iframe>
+          </div>
+          <div style={{
+            fontSize: "1rem", marginTop: 14, color: "#555"
+          }}>
+            Confira e curta meu último Reels produzido especialmente para inspirar você!
+          </div>
+        </section>
 
         <hr style={{ margin: "32px 0" }}/>
 
@@ -85,6 +183,7 @@ export default function Home() {
           <li><a href="https://linkedin.com/in/jonathas-lima-cunha-60070839/" target="_blank" rel="noopener noreferrer">Perfil no LinkedIn</a></li>
           <li><a href="https://www.instagram.com/jonathas.cunha/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
           <li><a href="https://github.com/patocg" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+          <li><a href="https://www.facebook.com/jonathas.cunha/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
           <li><a href="https://w3schools.com/" target="_blank" rel="noopener noreferrer">Ferramentas recomendadas</a></li>
         </ul>
         <div style={{ textAlign: "center", marginTop: 32, color: "#888", fontSize: "0.95rem" }}>
@@ -94,4 +193,3 @@ export default function Home() {
     </main>
   );
 }
-
