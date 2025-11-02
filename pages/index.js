@@ -164,7 +164,7 @@ export default function Home() {
           <div style={{
             fontSize: "1rem", marginTop: 14, color: "#555"
           }}>
-            Confira e curta meu último Reels produzido especialmente para inspirar você!
+            Confira meu Reels produzido especialmente para inspirar você, curta e siga para mais!
           </div>
         </section>
 
