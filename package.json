@@ -13,9 +13,15 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+<<<<<<< HEAD
     "next": "15.1.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+=======
+    "next": "^16.1.4",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+>>>>>>> origin/main
   },
   "devDependencies": {
     "jest": "^29.6.2",
