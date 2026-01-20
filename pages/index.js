@@ -146,13 +146,15 @@ export default function Home() {
             alt="Top Languages"
             style={{ maxWidth: "100%", width: "100%", minWidth: 280, borderRadius: 8, background: "#222", flex: "1 1 300px" }}
           />
-
-          {/* Card 3: GitHub Streak */}
+ 
+          {/* 
+          Card 3: GitHub Streak - Desativado (CORS issue em produção)
           <img
             src="https://github-readme-streak-stats.herokuapp.com/?user=patocg&theme=dracula&hide_border=true"
             alt="GitHub Streak"
             style={{ maxWidth: "100%", width: "100%", minWidth: 280, borderRadius: 8, background: "#222", flex: "1 1 300px" }}
           />
+          */}
 
           {/* Card 4: Top Repository */}
           <img
