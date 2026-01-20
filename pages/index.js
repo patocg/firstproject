@@ -765,11 +765,89 @@ export default function Home() {
           “Tecnologia é ferramenta de crescimento, aprendizado e conexão de pessoas. Evoluir todo dia é parte do processo!”
         </blockquote>
 
-        <hr style={{ margin: "32px 0" }} />
+        <footer style={{
+          background: "#fff",
+          color: "#333",
+          padding: "40px 32px",
+          marginTop: 64,
+          borderTop: "1px solid #e0e0e0"
+        }}>
+          <style>{`
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .footer-animate {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+    
+    .footer-link {
+      color: #666;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-link:hover {
+      color: #FF6B6B;
+    }
+  `}</style>
 
-        <div style={{ textAlign: "center", marginTop: 32, color: "#888", fontSize: "0.95rem" }}>
-          <sub> jnths.com.br · v1.1 - 01/2026</sub>
-        </div>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+
+            {/* Grid simples */}
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 24, marginBottom: 24 }}>
+
+              <div className="footer-animate" style={{ animationDelay: "0.1s" }}>
+                <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "1px", color: "#999", marginBottom: 8 }}>Projeto</p>
+                <a href="https://github.com/patocg" target="_blank" rel="noopener noreferrer" className="footer-link">GitHub</a><br />
+                <a href="https://jnths.com.br/" target="_blank" rel="noopener noreferrer" className="footer-link">Site</a>
+              </div>
+
+              <div className="footer-animate" style={{ animationDelay: "0.15s" }}>
+                <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "1px", color: "#999", marginBottom: 8 }}>Social</p>
+                <a href="https://linkedin.com/in/jonathas-lima-cunha-60070839/" target="_blank" rel="noopener noreferrer" className="footer-link">LinkedIn</a><br />
+                <a href="https://www.instagram.com/jonathas.cunha/" target="_blank" rel="noopener noreferrer" className="footer-link">Instagram</a>
+              </div>
+
+              <div className="footer-animate" style={{ animationDelay: "0.2s" }}>
+                <p style={{ fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "1px", color: "#999", marginBottom: 8 }}>Info</p>
+                <p style={{ fontSize: "0.9rem", color: "#666", margin: 0 }}>Campo Grande, MS</p>
+                <p style={{ fontSize: "0.9rem", color: "#4ECDC4", margin: "4px 0 0 0" }}>🟢 Disponível</p>
+              </div>
+
+            </div>
+
+            {/* Linha divisória fina */}
+            <hr style={{ border: "none", borderTop: "1px solid #e0e0e0", margin: "24px 0" }} />
+
+            {/* Footer bottom */}
+            <div className="footer-animate" style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexWrap: "wrap",
+              gap: 12,
+              fontSize: "0.85rem",
+              color: "#999",
+              animationDelay: "0.25s"
+            }}>
+              <p style={{ margin: 0 }}>© 2025 Jonathas Cunha</p>
+              <p style={{ margin: 0 }}>Stack: Next.js • React • Vercel</p>
+              <p style={{ margin: 0 }}>v1.0</p>
+            </div>
+
+          </div>
+        </footer>
+
+
       </section>
     </main>
   );
