@@ -132,41 +132,7 @@ export default function Home() {
                alt="Top Languages" style={{ width: 420, height: 220, borderRadius: 8, objectFit: "cover", background: "#222", flex: "1 1 320px" }}/>
         </div>
 
-        <hr style={{ margin: "32px 0" }}/>
-
-        {/* SEÇÃO DESTAQUES: Último reels do Instagram */}
-        <section style={{
-          background: "#fafafa",
-          borderRadius: 12,
-          boxShadow: "0 0 6px #eee",
-          margin: "32px auto",
-          maxWidth: 600,
-          padding: 24,
-          textAlign: "center"
-        }}>
-          <h2>🎥 Destaque no Instagram, só curtir e seguir.</h2>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            {/* Substitua o link pelo do seu Reels real */}
-            <iframe
-              src="https://www.instagram.com/reel/DQSpi68CZJD/embed"
-              width="340"
-              height="600"
-              style={{
-                maxWidth: "100%",
-                borderRadius: "10px",
-                border: "none",
-                boxShadow: "0 2px 10px #ddd"
-              }}
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              title="Reels Instagram"
-            ></iframe>
-          </div>
-          <div style={{
-            fontSize: "1rem", marginTop: 14, color: "#555"
-          }}>
-            Confira meu Reels produzido especialmente para inspirar você, curta e siga para mais!
-          </div>
-        </section>
+        {/* REMOVIDA DAQUI A SEÇÃO DE DESTAQUES DO INSTAGRAM */}
 
         <hr style={{ margin: "32px 0" }}/>
 
