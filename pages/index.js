@@ -129,47 +129,124 @@ export default function Home() {
         <div style={{
           display: "flex",
           flexWrap: "wrap",
-          gap: 24,
+          gap: 20,
           justifyContent: "center",
-          alignItems: "flex-start"
+          alignItems: "flex-start",
+          padding: "0 16px"
         }}>
           {/* Card 1: GitHub Stats */}
-          <img
-            src="https://github-readme-stats.vercel.app/api?username=patocg&show_icons=true&count_private=true&theme=dracula"
-            alt="Jonathas GitHub Stats"
-            style={{ maxWidth: "100%", width: "100%", minWidth: 280, borderRadius: 8, background: "#222", flex: "1 1 300px" }}
-          />
+          <div style={{
+            transition: "all 0.3s ease",
+            cursor: "pointer",
+            flex: "1 1 300px",
+            minWidth: 280
+          }}
+            onMouseOver={e => {
+              e.currentTarget.style.transform = "translateY(-8px)";
+              e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.25)";
+            }}
+            onMouseOut={e => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+            }}>
+            <img
+              src="https://github-readme-stats.vercel.app/api?username=patocg&show_icons=true&count_private=true&theme=dracula"
+              alt="Jonathas GitHub Stats"
+              style={{ maxWidth: "100%", width: "100%", borderRadius: 8, boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
+            />
+          </div>
 
           {/* Card 2: Top Languages */}
-          <img
-            src="https://github-readme-stats.vercel.app/api/top-langs?username=patocg&show_icons=true&locale=pt-br&theme=dracula"
-            alt="Top Languages"
-            style={{ maxWidth: "100%", width: "100%", minWidth: 280, borderRadius: 8, background: "#222", flex: "1 1 300px" }}
-          />
- 
+          <div style={{
+            transition: "all 0.3s ease",
+            cursor: "pointer",
+            flex: "1 1 300px",
+            minWidth: 280
+          }}
+            onMouseOver={e => {
+              e.currentTarget.style.transform = "translateY(-8px)";
+              e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.25)";
+            }}
+            onMouseOut={e => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+            }}>
+            <img
+              src="https://github-readme-stats.vercel.app/api/top-langs?username=patocg&show_icons=true&locale=pt-br&theme=dracula"
+              alt="Top Languages"
+              style={{ maxWidth: "100%", width: "100%", borderRadius: 8, boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
+            />
+          </div>
+
           {/* 
-          Card 3: GitHub Streak - Desativado (CORS issue em produção)
-          <img
-            src="https://github-readme-streak-stats.herokuapp.com/?user=patocg&theme=dracula&hide_border=true"
-            alt="GitHub Streak"
-            style={{ maxWidth: "100%", width: "100%", minWidth: 280, borderRadius: 8, background: "#222", flex: "1 1 300px" }}
-          />
-          */}
+    Card 3: GitHub Streak - DESATIVADO (CORS issue em produção)
+    <div style={{
+      transition: "all 0.3s ease",
+      cursor: "pointer",
+      flex: "1 1 300px",
+      minWidth: 280
+    }}
+    onMouseOver={e => {
+      e.currentTarget.style.transform = "translateY(-8px)";
+      e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.25)";
+    }}
+    onMouseOut={e => {
+      e.currentTarget.style.transform = "translateY(0)";
+      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+    }}>
+      <img 
+        src="https://streak-stats.demolab.com/?user=patocg&theme=dracula&hide_border=true"
+        alt="GitHub Streak" 
+        style={{ maxWidth: "100%", width: "100%", borderRadius: 8, boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
+      />
+    </div>
+  */}
 
           {/* Card 4: Top Repository */}
-          <img
-            src="https://github-readme-stats.vercel.app/api/pin/?username=patocg&repo=jnths&theme=dracula&width=420"
-            alt="Top Repository - jnths"
-            style={{ maxWidth: "100%", width: "100%", minWidth: 280, borderRadius: 8, background: "#222", flex: "1 1 300px" }}
-          />
+          <div style={{
+            transition: "all 0.3s ease",
+            cursor: "pointer",
+            flex: "1 1 300px",
+            minWidth: 280
+          }}
+            onMouseOver={e => {
+              e.currentTarget.style.transform = "translateY(-8px)";
+              e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.25)";
+            }}
+            onMouseOut={e => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+            }}>
+            <img
+              src="https://github-readme-stats.vercel.app/api/pin/?username=patocg&repo=jnths&theme=dracula"
+              alt="Top Repository - jnths"
+              style={{ maxWidth: "100%", width: "100%", borderRadius: 8, boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
+            />
+          </div>
 
           {/* Card 5: Contribution Stats */}
-          <img
-            src="https://github-readme-stats.vercel.app/api?username=patocg&theme=dracula&hide=stars,contribs&show=reviews,discussions_started,prs_merged_percentage"
-            alt="Contribution Stats"
-            style={{ maxWidth: "100%", width: "100%", minWidth: 280, borderRadius: 8, background: "#222", flex: "1 1 300px" }}
-          />
+          <div style={{
+            transition: "all 0.3s ease",
+            cursor: "pointer",
+            flex: "1 1 300px",
+            minWidth: 280
+          }}
+            onMouseOver={e => {
+              e.currentTarget.style.transform = "translateY(-8px)";
+              e.currentTarget.style.boxShadow = "0 12px 24px rgba(0,0,0,0.25)";
+            }}
+            onMouseOut={e => {
+              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+            }}>
+            <img
+              src="https://github-readme-stats.vercel.app/api?username=patocg&theme=dracula&hide=stars,contribs&show=reviews,discussions_started,prs_merged_percentage"
+              alt="Contribution Stats"
+              style={{ maxWidth: "100%", width: "100%", borderRadius: 8, boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}
+            />
+          </div>
         </div>
+
 
         {/* REMOVIDA DAQUI A SEÇÃO DE DESTAQUES DO INSTAGRAM */}
 
@@ -183,7 +260,7 @@ export default function Home() {
         <hr style={{ margin: "32px 0" }} />
 
         <div style={{ textAlign: "center", marginTop: 32, color: "#888", fontSize: "0.95rem" }}>
-          <sub>Feito com 💻 por Jonathas Cunha · Atualizado: Janeiro/2026</sub>
+          <sub> jnths.com.br · v1.1 - 01/2026</sub>
         </div>
       </section>
     </main>
