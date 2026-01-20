@@ -100,19 +100,331 @@ export default function Home() {
         <hr style={{ margin: "32px 0" }} />
 
         <h2>🛠️ Linguagens e Ferramentas</h2>
-        <div style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center" }}>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" height="32" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" alt="Flask" height="32" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" height="32" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" height="32" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" height="32" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" height="32" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" height="32" />
-          <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-gemini-icon.svg" alt="Gemini" height="32" />
-          <img src="https://logo.svgcdn.com/l/perplexity-icon.svg" alt="Perplexity" height="32" />
-          <img src="https://www.svgrepo.com/show/306500/openai.svg" alt="OpenAI" height="32" />
-          <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg" alt="Copilot" height="32" />
-          <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/grok.svg" alt="Grok" height="32" />
+
+        {/* Estilos de animação para ícones */}
+        <style>{`
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .icon-animate {
+    animation: fadeInScale 0.4s ease-out forwards;
+  }
+`}</style>
+
+        {/* Backend */}
+        <div style={{ marginBottom: 32 }}>
+          <h3 style={{ fontSize: "1rem", color: "#333", marginBottom: 12, textTransform: "uppercase", letterSpacing: "1px" }}>
+            🔧 Backend
+          </h3>
+          <div style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center" }}>
+            <div className="icon-animate" style={{ animationDelay: "0.1s" }}>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                alt="Python"
+                height="40"
+                style={{
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                }}
+                onMouseOver={e => {
+                  e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                }}
+                title="Python"
+              />
+            </div>
+            <div className="icon-animate" style={{ animationDelay: "0.15s" }}>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg"
+                alt="Flask"
+                height="40"
+                style={{
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                }}
+                onMouseOver={e => {
+                  e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                }}
+                title="Flask"
+              />
+            </div>
+            <div className="icon-animate" style={{ animationDelay: "0.2s" }}>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                alt="PostgreSQL"
+                height="40"
+                style={{
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                }}
+                onMouseOver={e => {
+                  e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                }}
+                title="PostgreSQL"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Frontend */}
+        <div style={{ marginBottom: 32 }}>
+          <h3 style={{ fontSize: "1rem", color: "#333", marginBottom: 12, textTransform: "uppercase", letterSpacing: "1px" }}>
+            🎨 Frontend
+          </h3>
+          <div style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center" }}>
+            <div className="icon-animate" style={{ animationDelay: "0.25s" }}>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+                alt="HTML5"
+                height="40"
+                style={{
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                }}
+                onMouseOver={e => {
+                  e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                }}
+                title="HTML5"
+              />
+            </div>
+            <div className="icon-animate" style={{ animationDelay: "0.3s" }}>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+                alt="CSS3"
+                height="40"
+                style={{
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                }}
+                onMouseOver={e => {
+                  e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                }}
+                title="CSS3"
+              />
+            </div>
+            <div className="icon-animate" style={{ animationDelay: "0.35s" }}>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                alt="JS"
+                height="40"
+                style={{
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                }}
+                onMouseOver={e => {
+                  e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                }}
+                title="JavaScript"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* DevOps & Tools */}
+        <div style={{ marginBottom: 32 }}>
+          <h3 style={{ fontSize: "1rem", color: "#333", marginBottom: 12, textTransform: "uppercase", letterSpacing: "1px" }}>
+            ⚙️ DevOps & Tools
+          </h3>
+          <div style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center" }}>
+            <div className="icon-animate" style={{ animationDelay: "0.4s" }}>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+                alt="Git"
+                height="40"
+                style={{
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                }}
+                onMouseOver={e => {
+                  e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                }}
+                title="Git"
+              />
+            </div>
+            <div className="icon-animate" style={{ animationDelay: "0.45s" }}>
+              <img
+                src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+                alt="VSCode"
+                height="40"
+                style={{
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                }}
+                onMouseOver={e => {
+                  e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                }}
+                onMouseOut={e => {
+                  e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                  e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                }}
+                title="VSCode"
+              />
+            </div>
+          </div>
+          {/* AI Tools */}
+          <div style={{ marginBottom: 32 }}>
+            <h3 style={{ fontSize: "1rem", color: "#333", marginBottom: 12, textTransform: "uppercase", letterSpacing: "1px" }}>
+              🤖 AI Tools
+            </h3>
+            <div style={{ display: "flex", gap: 18, flexWrap: "wrap", alignItems: "center" }}>
+              <div className="icon-animate" style={{ animationDelay: "0.5s" }}>
+                <img
+                  src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-gemini-icon.svg"
+                  alt="Gemini"
+                  height="40"
+                  style={{
+                    transition: "all 0.3s ease",
+                    cursor: "pointer",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}
+                  onMouseOver={e => {
+                    e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                    e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                  }}
+                  onMouseOut={e => {
+                    e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                    e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                  }}
+                  title="Gemini"
+                />
+              </div>
+              <div className="icon-animate" style={{ animationDelay: "0.55s" }}>
+                <img
+                  src="https://www.svgrepo.com/show/306500/openai.svg"
+                  alt="OpenAI"
+                  height="40"
+                  style={{
+                    transition: "all 0.3s ease",
+                    cursor: "pointer",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}
+                  onMouseOver={e => {
+                    e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                    e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                  }}
+                  onMouseOut={e => {
+                    e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                    e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                  }}
+                  title="OpenAI / GPT"
+                />
+              </div>
+              <div className="icon-animate" style={{ animationDelay: "0.6s" }}>
+                <img
+                  src="https://logo.svgcdn.com/l/perplexity-icon.svg"
+                  alt="Perplexity"
+                  height="40"
+                  style={{
+                    transition: "all 0.3s ease",
+                    cursor: "pointer",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}
+                  onMouseOver={e => {
+                    e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                    e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                  }}
+                  onMouseOut={e => {
+                    e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                    e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                  }}
+                  title="Perplexity"
+                />
+              </div>
+              <div className="icon-animate" style={{ animationDelay: "0.65s" }}>
+                <img
+                  src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/grok.svg"
+                  alt="Grok"
+                  height="40"
+                  style={{
+                    transition: "all 0.3s ease",
+                    cursor: "pointer",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}
+                  onMouseOver={e => {
+                    e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                    e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                  }}
+                  onMouseOut={e => {
+                    e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                    e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                  }}
+                  title="Grok"
+                />
+              </div>
+              <div className="icon-animate" style={{ animationDelay: "0.7s" }}>
+                <img
+                  src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg"
+                  alt="Copilot"
+                  height="40"
+                  style={{
+                    transition: "all 0.3s ease",
+                    cursor: "pointer",
+                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))"
+                  }}
+                  onMouseOver={e => {
+                    e.currentTarget.style.transform = "scale(1.2) rotateY(10deg)";
+                    e.currentTarget.style.filter = "drop-shadow(0 8px 16px rgba(0,0,0,0.2))";
+                  }}
+                  onMouseOut={e => {
+                    e.currentTarget.style.transform = "scale(1) rotateY(0deg)";
+                    e.currentTarget.style.filter = "drop-shadow(0 2px 4px rgba(0,0,0,0.1))";
+                  }}
+                  title="GitHub Copilot"
+                />
+              </div>
+            </div>
+          </div>
         </div>
 
         <hr style={{ margin: "32px 0" }} />
@@ -127,8 +439,8 @@ export default function Home() {
 
         <h2>📊 Estatísticas & Linguagens</h2>
 
-{/* Estilos de animação */}
-<style>{`
+        {/* Estilos de animação */}
+        <style>{`
   @keyframes fadeInSlideUp {
     from {
       opacity: 0;
@@ -150,197 +462,193 @@ export default function Home() {
   .card-5 { animation-delay: 0.4s; }
 `}</style>
 
-<div style={{
-  display: "flex", 
-  flexWrap: "wrap", 
-  gap: 20, 
-  justifyContent: "center", 
-  alignItems: "flex-start",
-  padding: "0 16px"
-}}>
-  {/* Card 1: GitHub Stats */}
-  <div className="card-animate card-1" style={{
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-    flex: "1 1 300px",
-    minWidth: 280
-  }}>
-    <label style={{
-      fontSize: "0.95rem",
-      fontWeight: "600",
-      color: "#555",
-      textTransform: "uppercase",
-      letterSpacing: "0.5px"
-    }}>
-      📈 GitHub Stats
-    </label>
-    <div style={{
-      transition: "all 0.3s ease",
-      cursor: "pointer",
-      border: "3px solid #FF6B6B",
-      borderRadius: 8,
-      padding: 2,
-      background: "#fff"
-    }}
-    onMouseOver={e => {
-      e.currentTarget.style.transform = "translateY(-8px)";
-      e.currentTarget.style.boxShadow = "0 12px 24px rgba(255, 107, 107, 0.3)";
-      e.currentTarget.style.borderColor = "#FF5252";
-    }}
-    onMouseOut={e => {
-      e.currentTarget.style.transform = "translateY(0)";
-      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
-      e.currentTarget.style.borderColor = "#FF6B6B";
-    }}>
-      <img 
-        src="https://github-readme-stats.vercel.app/api?username=patocg&show_icons=true&count_private=true&theme=dracula"
-        alt="Jonathas GitHub Stats" 
-        style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
-      />
-    </div>
-  </div>
-  
-  {/* Card 2: Top Languages */}
-  <div className="card-animate card-2" style={{
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-    flex: "1 1 300px",
-    minWidth: 280
-  }}>
-    <label style={{
-      fontSize: "0.95rem",
-      fontWeight: "600",
-      color: "#555",
-      textTransform: "uppercase",
-      letterSpacing: "0.5px"
-    }}>
-      💻 Top Languages
-    </label>
-    <div style={{
-      transition: "all 0.3s ease",
-      cursor: "pointer",
-      border: "3px solid #4ECDC4",
-      borderRadius: 8,
-      padding: 2,
-      background: "#fff"
-    }}
-    onMouseOver={e => {
-      e.currentTarget.style.transform = "translateY(-8px)";
-      e.currentTarget.style.boxShadow = "0 12px 24px rgba(78, 205, 196, 0.3)";
-      e.currentTarget.style.borderColor = "#3BA39C";
-    }}
-    onMouseOut={e => {
-      e.currentTarget.style.transform = "translateY(0)";
-      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
-      e.currentTarget.style.borderColor = "#4ECDC4";
-    }}>
-      <img 
-        src="https://github-readme-stats.vercel.app/api/top-langs?username=patocg&show_icons=true&locale=pt-br&theme=dracula"
-        alt="Top Languages" 
-        style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
-      />
-    </div>
-  </div>
-  
-  {/* 
+        <div style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 20,
+          justifyContent: "center",
+          alignItems: "flex-start",
+          padding: "0 16px"
+        }}>
+          {/* Card 1: GitHub Stats */}
+          <div className="card-animate card-1" style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
+            flex: "1 1 300px",
+            minWidth: 280
+          }}>
+            <label style={{
+              fontSize: "0.95rem",
+              fontWeight: "600",
+              color: "#555",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px"
+            }}>
+              📈 GitHub Stats
+            </label>
+            <div style={{
+              transition: "all 0.3s ease",
+              cursor: "pointer",
+              border: "3px solid #FF6B6B",
+              borderRadius: 8,
+              padding: 2,
+              background: "#fff"
+            }}
+              onMouseOver={e => {
+                e.currentTarget.style.transform = "translateY(-8px)";
+                e.currentTarget.style.boxShadow = "0 12px 24px rgba(255, 107, 107, 0.3)";
+                e.currentTarget.style.borderColor = "#FF5252";
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+                e.currentTarget.style.borderColor = "#FF6B6B";
+              }}>
+              <img
+                src="https://github-readme-stats.vercel.app/api?username=patocg&show_icons=true&count_private=true&theme=dracula"
+                alt="Jonathas GitHub Stats"
+                style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
+              />
+            </div>
+          </div>
+
+          {/* Card 2: Top Languages */}
+          <div className="card-animate card-2" style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
+            flex: "1 1 300px",
+            minWidth: 280
+          }}>
+            <label style={{
+              fontSize: "0.95rem",
+              fontWeight: "600",
+              color: "#555",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px"
+            }}>
+              💻 Top Languages
+            </label>
+            <div style={{
+              transition: "all 0.3s ease",
+              cursor: "pointer",
+              border: "3px solid #4ECDC4",
+              borderRadius: 8,
+              padding: 2,
+              background: "#fff"
+            }}
+              onMouseOver={e => {
+                e.currentTarget.style.transform = "translateY(-8px)";
+                e.currentTarget.style.boxShadow = "0 12px 24px rgba(78, 205, 196, 0.3)";
+                e.currentTarget.style.borderColor = "#3BA39C";
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+                e.currentTarget.style.borderColor = "#4ECDC4";
+              }}>
+              <img
+                src="https://github-readme-stats.vercel.app/api/top-langs?username=patocg&show_icons=true&locale=pt-br&theme=dracula"
+                alt="Top Languages"
+                style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
+              />
+            </div>
+          </div>
+
+          {/* 
     Card 3: GitHub Streak - DESATIVADO (CORS issue em produção)
     <div className="card-animate card-3" style={{...}}>
       ...
     </div>
   */}
-  
-  {/* Card 4: Top Repository */}
-  <div className="card-animate card-4" style={{
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-    flex: "1 1 300px",
-    minWidth: 280
-  }}>
-    <label style={{
-      fontSize: "0.95rem",
-      fontWeight: "600",
-      color: "#555",
-      textTransform: "uppercase",
-      letterSpacing: "0.5px"
-    }}>
-      ⭐ Top Repository
-    </label>
-    <div style={{
-      transition: "all 0.3s ease",
-      cursor: "pointer",
-      border: "3px solid #6C5CE7",
-      borderRadius: 8,
-      padding: 2,
-      background: "#fff"
-    }}
-    onMouseOver={e => {
-      e.currentTarget.style.transform = "translateY(-8px)";
-      e.currentTarget.style.boxShadow = "0 12px 24px rgba(108, 92, 231, 0.3)";
-      e.currentTarget.style.borderColor = "#5F3DC4";
-    }}
-    onMouseOut={e => {
-      e.currentTarget.style.transform = "translateY(0)";
-      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
-      e.currentTarget.style.borderColor = "#6C5CE7";
-    }}>
-      <img 
-        src="https://github-readme-stats.vercel.app/api/pin/?username=patocg&repo=jnths&theme=dracula"
-        alt="Top Repository - jnths" 
-        style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
-      />
-    </div>
-  </div>
-  
-  {/* Card 5: Contribution Stats */}
-  <div className="card-animate card-5" style={{
-    display: "flex",
-    flexDirection: "column",
-    gap: 8,
-    flex: "1 1 300px",
-    minWidth: 280
-  }}>
-    <label style={{
-      fontSize: "0.95rem",
-      fontWeight: "600",
-      color: "#555",
-      textTransform: "uppercase",
-      letterSpacing: "0.5px"
-    }}>
-      🎯 Contributions
-    </label>
-    <div style={{
-      transition: "all 0.3s ease",
-      cursor: "pointer",
-      border: "3px solid #A29BFE",
-      borderRadius: 8,
-      padding: 2,
-      background: "#fff"
-    }}
-    onMouseOver={e => {
-      e.currentTarget.style.transform = "translateY(-8px)";
-      e.currentTarget.style.boxShadow = "0 12px 24px rgba(162, 155, 254, 0.3)";
-      e.currentTarget.style.borderColor = "#9B88E8";
-    }}
-    onMouseOut={e => {
-      e.currentTarget.style.transform = "translateY(0)";
-      e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
-      e.currentTarget.style.borderColor = "#A29BFE";
-    }}>
-      <img 
-        src="https://github-readme-stats.vercel.app/api?username=patocg&theme=dracula&hide=stars,contribs&show=reviews,discussions_started,prs_merged_percentage"
-        alt="Contribution Stats" 
-        style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
-      />
-    </div>
-  </div>
-</div>
 
+          {/* Card 4: Top Repository */}
+          <div className="card-animate card-4" style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
+            flex: "1 1 300px",
+            minWidth: 280
+          }}>
+            <label style={{
+              fontSize: "0.95rem",
+              fontWeight: "600",
+              color: "#555",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px"
+            }}>
+              ⭐ Top Repository
+            </label>
+            <div style={{
+              transition: "all 0.3s ease",
+              cursor: "pointer",
+              border: "3px solid #6C5CE7",
+              borderRadius: 8,
+              padding: 2,
+              background: "#fff"
+            }}
+              onMouseOver={e => {
+                e.currentTarget.style.transform = "translateY(-8px)";
+                e.currentTarget.style.boxShadow = "0 12px 24px rgba(108, 92, 231, 0.3)";
+                e.currentTarget.style.borderColor = "#5F3DC4";
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+                e.currentTarget.style.borderColor = "#6C5CE7";
+              }}>
+              <img
+                src="https://github-readme-stats.vercel.app/api/pin/?username=patocg&repo=jnths&theme=dracula"
+                alt="Top Repository - jnths"
+                style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
+              />
+            </div>
+          </div>
 
-
-
+          {/* Card 5: Contribution Stats */}
+          <div className="card-animate card-5" style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: 8,
+            flex: "1 1 300px",
+            minWidth: 280
+          }}>
+            <label style={{
+              fontSize: "0.95rem",
+              fontWeight: "600",
+              color: "#555",
+              textTransform: "uppercase",
+              letterSpacing: "0.5px"
+            }}>
+              🎯 Contributions
+            </label>
+            <div style={{
+              transition: "all 0.3s ease",
+              cursor: "pointer",
+              border: "3px solid #A29BFE",
+              borderRadius: 8,
+              padding: 2,
+              background: "#fff"
+            }}
+              onMouseOver={e => {
+                e.currentTarget.style.transform = "translateY(-8px)";
+                e.currentTarget.style.boxShadow = "0 12px 24px rgba(162, 155, 254, 0.3)";
+                e.currentTarget.style.borderColor = "#9B88E8";
+              }}
+              onMouseOut={e => {
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.1)";
+                e.currentTarget.style.borderColor = "#A29BFE";
+              }}>
+              <img
+                src="https://github-readme-stats.vercel.app/api?username=patocg&theme=dracula&hide=stars,contribs&show=reviews,discussions_started,prs_merged_percentage"
+                alt="Contribution Stats"
+                style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
+              />
+            </div>
+          </div>
+        </div>
         {/* REMOVIDA DAQUI A SEÇÃO DE DESTAQUES DO INSTAGRAM */}
 
         <hr style={{ margin: "32px 0" }} />
