@@ -31,7 +31,7 @@ const socialLinks = [
 
 export default function Home() {
   return (
-    <main style={{ fontFamily: "Arial, sans-serif", background: "#f9f9f9", minHeight: "100vh" }}>
+    <main style={{ fontFamily: "Arial, sans-serif", background: "#404040", minHeight: "100vh" }}>
       <div style={{ textAlign: "center", maxWidth: 900, margin: "0 auto", padding: 32, background: "#fff", borderRadius: 12, boxShadow: "0 0 12px #ddd" }}>
         <h1>👋 Olá, eu sou Jonathas Cunha!</h1>
 
@@ -94,7 +94,7 @@ export default function Home() {
         <ul>
           <li>🎯 <strong>Missão</strong>: Transformar desafios em soluções digitais que impulsionam negócios e pessoas.</li>
           <li>🚀 <strong>Experiência</strong>: Projetos envolvendo Python, infraestrutura de redes, integração web e automação.</li>
-          <li>💡 <strong>Aprendizado contínuo</strong> e autêntico — sempre testando novas ferramentas, frameworks e boas práticas.</li>
+          <li>💡 <strong>Aprendizado contínuo e autêntico</strong> — sempre testando novas ferramentas, frameworks e boas práticas.</li>
         </ul>
 
         <hr style={{ margin: "32px 0" }}/>
@@ -108,14 +108,17 @@ export default function Home() {
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JS" height="32"/>
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" height="32"/>
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" height="32"/>
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VSCode" height="32"/>
+          <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/google-gemini-icon.svg" alt="Gemini" height="32"/>
+          <img src="https://logo.svgcdn.com/l/perplexity-icon.svg" alt="Perplexity" height="32"/>
+          <img src="https://www.svgrepo.com/show/306500/openai.svg" alt="OpenAI" height="32"/>
+          <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/github-copilot-icon.svg" alt="Copilot" height="32"/>
+          <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/grok.svg" alt="Grok" height="32"/>
         </div>
 
         <hr style={{ margin: "32px 0" }}/>
 
-        <h2>📖 O que você encontra aqui</h2>
+        <h2>📖 O que você pode encontrar aqui</h2>
         <ul>
-          <li>Tutoriais, códigos e exemplos práticos para quem está começando ou quer aprimorar projetos pessoais.</li>
           <li>Soluções para automação de tarefas, integração de APIs, uso de Python em projetos reais.</li>
           <li>Dicas de configuração, uso de ferramentas modernas e integração com Vercel e cloud hosting.</li>
         </ul>
@@ -153,7 +156,7 @@ export default function Home() {
           <li><a href="https://w3schools.com/" target="_blank" rel="noopener noreferrer">Ferramentas recomendadas</a></li>
         </ul>
         <div style={{ textAlign: "center", marginTop: 32, color: "#888", fontSize: "0.95rem" }}>
-          <sub>Feito com 💻 por Jonathas Cunha · Atualizado: Novembro 2025</sub>
+          <sub>Feito com 💻 por Jonathas Cunha · Atualizado: Janeiro/2026</sub>
         </div>
       </section>
     </main>
