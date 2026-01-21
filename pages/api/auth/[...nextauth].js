@@ -1,0 +1,40 @@
+import NextAuth from "next-auth";
+import GoogleProvider from "next-auth/providers/google";
+
+const allowedEmails =
+  process.env.ALLOWED_EMAILS?.split(",").map((e) => e.trim()) || [];
+
+export default NextAuth({
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+  ],
+  callbacks: {
+    async signIn({ user }) {
+      const email = user?.email || "";
+      console.log("EMAIL GOOGLE:", email, "ALLOWED:", allowedEmails);
+      
+      if (!email) return false;
+
+      // só e-mails da lista ALLOWED_EMAILS podem logar
+      if (allowedEmails.includes(email)) {
+        return true;
+      }
+      return false;
+    },
+    async jwt({ token, profile }) {
+      if (profile?.email) {
+        token.email = profile.email;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user && token.email) {
+        session.user.email = token.email;
+      }
+      return session;
+    },
+  },
+});
