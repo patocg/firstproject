@@ -721,7 +721,7 @@ export default function Home() {
                 e.currentTarget.style.borderColor = "#FF6B6B";
               }}>
               <img
-                src="https://github-readme-stats.vercel.app/api?username=patocg&show_icons=true&count_private=true&theme=dracula"
+                src="https://github-readme-stats-kappa-eight-10.vercel.app/api?username=patocg&show_icons=true&count_private=true&theme=dracula"
                 alt="Jonathas GitHub Stats"
                 style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
               />
@@ -764,7 +764,7 @@ export default function Home() {
                 e.currentTarget.style.borderColor = "#4ECDC4";
               }}>
               <img
-                src="https://github-readme-stats.vercel.app/api/top-langs?username=patocg&show_icons=true&locale=pt-br&theme=dracula"
+                src="https://github-readme-stats-kappa-eight-10.vercel.app/api/top-langs?username=patocg&show_icons=true&locale=pt-br&theme=dracula"
                 alt="Top Languages"
                 style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
               />
@@ -814,7 +814,7 @@ export default function Home() {
                 e.currentTarget.style.borderColor = "#6C5CE7";
               }}>
               <img
-                src="https://github-readme-stats.vercel.app/api/pin/?username=patocg&repo=jnths&theme=dracula"
+                src="https://github-readme-stats-kappa-eight-10.vercel.app/api/pin/?username=patocg&repo=jnths&theme=dracula"
                 alt="Top Repository - jnths"
                 style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
               />
@@ -857,7 +857,7 @@ export default function Home() {
                 e.currentTarget.style.borderColor = "#A29BFE";
               }}>
               <img
-                src="https://github-readme-stats.vercel.app/api?username=patocg&theme=dracula&hide=stars,contribs&show=reviews,discussions_started,prs_merged_percentage"
+                src="https://github-readme-stats-kappa-eight-10.vercel.app/api?username=patocg&theme=dracula&hide=stars,contribs&show=reviews,discussions_started,prs_merged_percentage"
                 alt="Contribution Stats"
                 style={{ maxWidth: "100%", width: "100%", borderRadius: 6, display: "block" }}
               />
