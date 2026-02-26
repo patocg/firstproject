@@ -1,44 +1,51 @@
-// pages/auth/error.js
-import { useRouter } from "next/router";
-import Link from "next/link";
+import { useRouter } from 'next/router';
 
-export default function AuthErrorPage() {
-  const { query } = useRouter();
-  const error = query.error;
-
-  let message = "Não foi possível acessar o álbum.";
-  if (error === "not_allowed") {
-    message =
-      "Seu e-mail não está autorizado a acessar este álbum privado da família.";
-  } else if (error === "no_email") {
-    message =
-      "Não foi possível encontrar um e-mail válido na sua conta Google.";
-  }
+export default function AuthError() {
+  const router = useRouter();
+  const { error } = router.query;
 
   return (
-    <div style={{ padding: 32, maxWidth: 600, margin: "0 auto" }}>
-      <h1>⚠️ Acesso restrito</h1>
-      <p style={{ marginTop: 16 }}>{message}</p>
-      <p style={{ marginTop: 8 }}>
-        Se você acha que isso é um engano, entre em contato com o Jonathas para
-        liberar o seu e-mail.
+    <div style={{
+      maxWidth: '600px',
+      margin: '100px auto',
+      padding: '20px',
+      textAlign: 'center',
+      fontFamily: 'Arial, sans-serif',
+    }}>
+      <h1>❌ Erro na Autenticação</h1>
+      
+      <p style={{ fontSize: '1.1rem', color: '#666' }}>
+        Algo deu errado ao tentar fazer login com Google.
       </p>
 
-      <div style={{ marginTop: 24 }}>
-        <Link href="/">
-          <a
-            style={{
-              padding: "8px 16px",
-              borderRadius: 8,
-              background: "#111827",
-              color: "#fff",
-              textDecoration: "none",
-            }}
-          >
-            Voltar para a página inicial
-          </a>
-        </Link>
-      </div>
+      {error && (
+        <div style={{
+          background: '#fee',
+          border: '1px solid #fcc',
+          borderRadius: '8px',
+          padding: '10px',
+          margin: '20px 0',
+          color: '#c00',
+        }}>
+          <strong>Erro:</strong> {error}
+        </div>
+      )}
+
+      <p style={{ marginTop: '20px' }}>
+        <button 
+          onClick={() => router.push('/')}
+          style={{
+            padding: '10px 20px',
+            background: '#111827',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '8px',
+            cursor: 'pointer',
+          }}
+        >
+          ← Voltar para Home
+        </button>
+      </p>
     </div>
   );
 }
