@@ -1,5 +1,7 @@
 import React from "react";
 import { signIn } from "next-auth/react";
+import ProjectsModal from '../components/ProjectsModal';
+
 
 const socialLinks = [
   {
@@ -649,6 +651,17 @@ export default function Home() {
           <li>Soluções para automação de tarefas, integração de APIs, uso de Python em projetos reais.</li>
           <li>Dicas de configuração, uso de ferramentas modernas e integração com Vercel e cloud hosting.</li>
         </ul>
+
+        <hr style={{ margin: "32px 0" }} />
+
+        <hr style={{ margin: "32px 0" }} />
+
+        <h2>⚡ Projetos em Andamento</h2>
+        <p style={{ color: "#555", fontSize: "1rem" }}>
+          Confira os projetos que estou desenvolvendo atualmente com foco em tecnologia, inovação e impacto real.
+        </p>
+
+        <ProjectsModal />
 
         <hr style={{ margin: "32px 0" }} />
 
