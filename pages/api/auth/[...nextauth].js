@@ -1,5 +1,8 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+// Importa DynamoDB DocumentClient e GetCommand para ler whitelist
+import { ddb } from "../../../lib/dynamo";
+import { GetCommand } from "@aws-sdk/lib-dynamodb";
 
 // ✅ Rate Limiting simples
 const loginAttempts = new Map();
@@ -26,7 +29,8 @@ function checkLoginRateLimit(email) {
   return true;
 }
 
-export default NextAuth({
+// 🔁 Aqui só empacotamos a config em authOptions
+export const authOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -37,19 +41,50 @@ export default NextAuth({
     signIn: "/auth/signin",
     error: "/auth/error",
   },
+  
   callbacks: {
-    async signIn({ user }) {
-      const email = user?.email?.toLowerCase();
-      
-      // ✅ Verificar rate limit
-      if (!checkLoginRateLimit(email)) {
-        console.warn(`[NextAuth] Rate limit atingido para: ${email}`);
-        return "/auth/error?error=too_many_attempts";
+  async signIn({ user }) {
+    // Se por algum motivo não houver email, bloqueia
+    if (!user?.email) {
+      console.warn("[NextAuth] Usuário sem email, bloqueando.");
+      return false;
+    }
+
+    const email = user.email.toLowerCase();
+
+    // Dono sempre tem acesso
+    const OWNER_EMAIL = "jonathas.lima.cunha@gmail.com";
+    if (email === OWNER_EMAIL.toLowerCase()) {
+      return true;
+    }
+
+    try {
+      // Lê diretamente na tabela whitelist se esse email existe
+      const command = new GetCommand({
+        TableName: process.env.DYNAMO_TABLE_WHITELIST,
+        Key: {
+          email, // PK da tabela whitelist
+        },
+      });
+
+      const data = await ddb.send(command);
+
+      if (!data.Item) {
+        // Não está na whitelist → bloqueia login
+        console.warn(`[NextAuth] Email não autorizado: ${email}`);
+        // false aqui cancela o signIn
+        return false;
       }
-      
-      const allowedEmails = process.env.ALLOWED_EMAILS?.split(",").map(e => e.trim()) || [];
-      return allowedEmails.includes(email);
-    },
+
+      // Está na whitelist → login permitido
+      return true;
+    } catch (err) {
+      console.error("[NextAuth] Erro ao checar whitelist no DynamoDB:", err);
+      // Em caso de erro de infra, melhor bloquear por segurança
+      return false;
+    }
+  },
+
     async jwt({ token, user }) {
       if (user) token.email = user.email;
       return token;
@@ -59,4 +94,7 @@ export default NextAuth({
       return session;
     },
   },
-});
+};
+
+// ✅ Export default continua igual, só usando authOptions
+export default NextAuth(authOptions);
