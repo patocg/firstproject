@@ -85,7 +85,7 @@ export default function AlbumPage() {
     }
   };
 
-    // ✅ Carrega a whitelist completa (apenas se for dono)
+  // ✅ Carrega a whitelist completa (apenas se for dono)
   const fetchWhitelist = async () => {
     // Segurança extra no front: só tenta se for dono
     if (!IS_OWNER) return;
@@ -194,12 +194,20 @@ export default function AlbumPage() {
     checkAccess();
   }, [status, session]);
 
-    // ✅ Quando dono autenticar, carrega whitelist para gerenciar convidados
+  // ✅ Quando dono autenticar, carrega whitelist para gerenciar convidados
   useEffect(() => {
     if (status === "authenticated" && IS_OWNER) {
       fetchWhitelist();
     }
   }, [status, IS_OWNER]);
+
+  // ✅ Carrega a lista de álbuns sempre que a sessão estiver autenticadas
+  useEffect(() => {
+    if (status === "authenticated" && allowed === true) {
+      fetchAlbums();
+    }
+  }, [status, allowed]);
+
 
   // // 1) Sessão ainda está carregando (NextAuth)
   if (status === "loading") {
@@ -241,16 +249,99 @@ export default function AlbumPage() {
 
   // 4) Logado, mas NÃO está na whitelist e não é o dono
   if (!allowed) {
-    return (
-      <div style={{ padding: 32 }}>
-        <h2>Você não tem permissão para acessar este álbum.</h2>
-        <p>Entre em contato com o dono para solicitar acesso.</p>
+    const email = session.user?.email?.toLowerCase();
+    const name = session.user?.name || "Usuário";
 
-        {/* Informação de quem está logado, para debug/transparência */}
-        <p style={{ marginTop: 8, fontSize: "0.9rem", color: "#6b7280" }}>
-          Usuário logado:{" "}
-          {session.user?.name || "(sem nome)"} | {session.user?.email}
+    return (
+      <div
+        style={{
+          padding: 32,
+          maxWidth: 520,
+          margin: "40px auto",
+          borderRadius: 12,
+          border: "1px solid #e5e7eb",
+          background: "#f9fafb",
+          fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+        }}
+      >
+        <h2 style={{ fontSize: "1.4rem", marginBottom: 8 }}>
+          Acesso ainda não liberado
+        </h2>
+
+        <p style={{ marginBottom: 12, color: "#374151" }}>
+          Olá, <strong>{name}</strong>. Este álbum é privado e o seu e-mail
+          ainda não foi autorizado para visualização.
         </p>
+
+        <div
+          style={{
+            padding: 10,
+            borderRadius: 8,
+            background: "#eef2ff",
+            border: "1px solid #c7d2fe",
+            marginBottom: 16,
+            fontSize: "0.9rem",
+            color: "#374151",
+          }}
+        >
+          <div style={{ fontWeight: 500, marginBottom: 4 }}>
+            E-mail logado:
+          </div>
+          <div>{email}</div>
+        </div>
+
+        <p style={{ marginBottom: 16, fontSize: "0.9rem", color: "#4b5563" }}>
+          Para solicitar acesso, fale com o dono do álbum e informe o e-mail
+          acima. Ele poderá adicionar você à lista de convidados.
+        </p>
+
+        <div
+          style={{
+            display: "flex",
+            gap: 8,
+            flexWrap: "wrap",
+            marginTop: 8,
+          }}
+        >
+          <button
+            onClick={() =>
+              signOut({
+                callbackUrl: "/",
+                redirect: true,
+              })
+            }
+            style={{
+              padding: "8px 16px",
+              borderRadius: 8,
+              border: "none",
+              cursor: "pointer",
+              background: "#4b5563",
+              color: "#fff",
+              fontWeight: 500,
+            }}
+          >
+            Sair e trocar de conta
+          </button>
+
+          <button
+            onClick={() => {
+              alert(
+                "Entre em contato com o dono do álbum e informe o e-mail exibido acima."
+              );
+            }}
+            style={{
+              padding: "8px 16px",
+              borderRadius: 8,
+              border: "1px solid #d1d5db",
+              cursor: "pointer",
+              background: "#fff",
+              color: "#111827",
+              fontWeight: 500,
+            }}
+          >
+            Entendi
+          </button>
+        </div>
       </div>
     );
   }
@@ -548,7 +639,7 @@ export default function AlbumPage() {
         </button>
       </p>
 
-            {/* ✅ Painel de administração da whitelist - visível só para o dono */}
+      {/* ✅ Painel de administração da whitelist - visível só para o dono */}
       {IS_OWNER && (
         <div
           style={{
