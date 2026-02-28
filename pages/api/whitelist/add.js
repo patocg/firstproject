@@ -1,12 +1,14 @@
 // pages/api/whitelist/add.js
 
-// PutItem na tabela whitelist (cria ou atualiza)
+// PutItem na tabela whitelist (cria ou atualiza um registro)
 import { PutCommand } from "@aws-sdk/lib-dynamodb";
 import { ddb } from "../../../lib/dynamo";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 
+// Nome da tabela de whitelist (vem das envs, dev/prod)
 const TABLE = process.env.DYNAMO_TABLE_WHITELIST;
+// Email do dono, único autorizado a gerenciar whitelist
 const OWNER_EMAIL = "jonathas.lima.cunha@gmail.com";
 
 export default async function handler(req, res) {
@@ -31,16 +33,38 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Missing email" });
   }
 
+  // Garante que a env da tabela está configurada
+  if (!TABLE) {
+    console.error("[Whitelist:add] DYNAMO_TABLE_WHITELIST não configurada.");
+    return res.status(500).json({
+      error: "Configuração de tabela da whitelist ausente",
+    });
+  }
+
   try {
     const now = new Date().toISOString();
+    const normalizedEmail = email.toLowerCase();
+    const createdBy = session.user.email.toLowerCase();
+
+    console.info(
+      "[Whitelist:add] Adicionando/atualizando email na whitelist:",
+      normalizedEmail,
+      "tabela:",
+      TABLE,
+      "por:",
+      createdBy
+    );
 
     const command = new PutCommand({
       TableName: TABLE,
       Item: {
-        email: email.toLowerCase(),
+        // PK da tabela (case-insensitive, sempre lower)
+        email: normalizedEmail,
+        // Nome opcional, se não vier fica null
         name: name || null,
+        // Metadados de auditoria
         createdAt: now,
-        createdBy: session.user.email.toLowerCase(),
+        createdBy,
       },
     });
 
@@ -48,7 +72,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ ok: true });
   } catch (err) {
-    console.error("Erro ao adicionar na whitelist", err);
+    console.error("[Whitelist:add] Erro ao adicionar na whitelist", err);
     return res.status(500).json({
       error: "Erro ao adicionar na whitelist",
       details: err.message || String(err),
