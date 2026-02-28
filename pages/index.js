@@ -6,6 +6,15 @@ import SkillsSection from "../components/sections/SkillSection";
 import ProjectsSection from "../components/sections/ProjectsSection";
 import StatsSection from "../components/sections/StatsSection";
 
+export async function getStaticProps() {
+  return {
+    props: {
+      // no futuro podemos passar dados aqui (ex.: stats, projetos, etc.)
+    },
+    revalidate: 3600, // revalida a cada 1 hora
+  };
+}
+
 const socialLinks = [
   {
     href: "https://linkedin.com/in/jonathas-lima-cunha-60070839/",
