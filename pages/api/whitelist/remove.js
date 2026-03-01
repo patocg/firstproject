@@ -1,11 +1,16 @@
 // pages/api/whitelist/remove.js
+//
+// Responsabilidade: remover completamente um usuário da whitelist.
+// Somente o dono pode chamar.
+
 import { DeleteCommand } from "@aws-sdk/lib-dynamodb";
 import { ddb } from "../../../lib/dynamo";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 
 const TABLE = process.env.DYNAMO_TABLE_WHITELIST;
-const OWNER_EMAIL = "jonathas.lima.cunha@gmail.com";
+// Sempre ler do .env (server-side)
+const OWNER_EMAIL = process.env.OWNER_EMAIL || "";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -34,7 +39,12 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.info("[Whitelist:remove] Removendo email:", email, "da tabela:", TABLE);
+    console.info(
+      "[Whitelist:remove] Removendo email:",
+      email,
+      "da tabela:",
+      TABLE
+    );
 
     const command = new DeleteCommand({
       TableName: TABLE,

@@ -1,11 +1,17 @@
 // pages/api/whitelist/list.js
+//
+// Responsabilidade: listar todos os registros da whitelist.
+// Somente o dono pode chamar. Não alteramos nada aqui, apenas usamos os campos
+// existentes + novos campos de permissão se estiverem presentes na tabela.
+
 import { ScanCommand } from "@aws-sdk/lib-dynamodb";
 import { ddb } from "../../../lib/dynamo";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 
 const TABLE = process.env.DYNAMO_TABLE_WHITELIST;
-const OWNER_EMAIL = "jonathas.lima.cunha@gmail.com";
+// Sempre ler do .env (server-side)
+const OWNER_EMAIL = process.env.OWNER_EMAIL || "";
 
 export default async function handler(req, res) {
   if (req.method !== "GET") {
