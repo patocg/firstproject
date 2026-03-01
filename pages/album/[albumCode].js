@@ -140,12 +140,6 @@ export default function AlbumDetailPage() {
     const themeIconLeft = "🌙";
     const themeIconRight = "☀️";
 
-    // Dono do álbum (admin global do sistema).
-    // Determina se o usuário logado é o OWNER_EMAIL.
-    const isOwner =
-        session?.user?.email &&
-        session.user.email.toLowerCase() === OWNER_EMAIL.toLowerCase();
-
     // Checa whitelist quando autenticado.
     useEffect(() => {
         if (status !== "authenticated") return;
