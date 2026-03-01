@@ -1,6 +1,11 @@
 // pages/api/whitelist/add.js
+//
+// Responsabilidade: criar ou atualizar um registro na tabela de whitelist.
+// Agora, além de email/name/createdAt/createdBy, gravamos campos de permissão:
+// - isActive (bool)
+// - lastLoginAt (string, opcional)
+// - canViewAlbums / canDeletePhotos / canUploadPhotos / canEditProfile (bool)
 
-// PutItem na tabela whitelist (cria ou atualiza um registro)
 import { PutCommand } from "@aws-sdk/lib-dynamodb";
 import { ddb } from "../../../lib/dynamo";
 import { getServerSession } from "next-auth";
@@ -8,8 +13,8 @@ import { authOptions } from "../auth/[...nextauth]";
 
 // Nome da tabela de whitelist (vem das envs, dev/prod)
 const TABLE = process.env.DYNAMO_TABLE_WHITELIST;
-// Email do dono, único autorizado a gerenciar whitelist
-const OWNER_EMAIL = "jonathas.lima.cunha@gmail.com";
+// Sempre ler do .env (server-side)
+const OWNER_EMAIL = process.env.OWNER_EMAIL || "";
 
 export default async function handler(req, res) {
   // Aceita apenas POST
@@ -55,16 +60,27 @@ export default async function handler(req, res) {
       createdBy
     );
 
+    // Defaults de permissão ao criar um novo usuário na whitelist:
+    // - Ativo
+    // - Pode ver álbuns
+    // - Não pode excluir/mandar upload/alterar cadastro
     const command = new PutCommand({
       TableName: TABLE,
       Item: {
         // PK da tabela (case-insensitive, sempre lower)
         email: normalizedEmail,
-        // Nome opcional, se não vier fica null
+        // Nome opcional
         name: name || null,
         // Metadados de auditoria
         createdAt: now,
         createdBy,
+        // Campos de permissão / status
+        isActive: true,
+        lastLoginAt: null,
+        canViewAlbums: true,
+        canDeletePhotos: false,
+        canUploadPhotos: false,
+        canEditProfile: false,
       },
     });
 
