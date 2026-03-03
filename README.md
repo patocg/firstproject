@@ -1,235 +1,234 @@
-# 🌐 jnths.com.br - Portfólio Pessoal v1.0
+# FIRSTPROJECT
 
-> Portfólio moderno e responsivo com animações suaves, hover effects e design elegante
+Aplicação web desenvolvida com Next.js, integrando AWS (S3 + DynamoDB), autenticação OAuth via Google e controle de acesso baseado em whitelist.
 
-[![Version](https://img.shields.io/badge/version-1.0-blue.svg?style=flat-square)](https://github.com/patocg/firstproject/releases/tag/v1.0)
-[![Stack](https://img.shields.io/badge/stack-Next.js%20•%20React%20•%20Vercel-black.svg?style=flat-square)](https://github.com/patocg/firstproject)
-[![Deploy](https://img.shields.io/badge/deploy-Vercel-success.svg?style=flat-square)](https://jnths.com.br)
-[![License](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](#license)
+Este projeto evoluiu de um portfólio visual para um laboratório de engenharia focado em arquitetura, segurança, DevOps e governança de código.
 
----
+Deploy em produção:
+https://jnths.com.br
 
-## 📸 Preview
-
-[Acesse o site live](https://jnths.com.br)
+Repositório:
+https://github.com/patocg/firstproject
 
 ---
 
-## ✨ Características Principais
+# 1. Objetivo do Projeto
 
-### 🎨 Design Moderno
-- Paleta de cores harmônica e minimalista
-- Fundo cinza moderno (`#e5e5e5`)
-- Cards brancos com bordas coloridas
-- Typography clara e hierárquica
-- 100% responsivo
+O firstproject não é apenas uma vitrine visual.
 
-### 🎬 Animações & Efeitos
-- **Fade In + Slide**: Elementos entram com animação suave
-- **Scale Effect**: Ícones crescem ao aparecer
-- **Hover Effects**: Cards sobem, ícones brilham
-- **Transições Suaves**: 0.3s ease em todos os elementos
-- Delays progressivos para efeito cascata
+Ele foi estruturado para demonstrar:
 
-### 🛠️ Seções Principais
+- Arquitetura escalável
+- Integração com serviços cloud
+- Controle de acesso baseado em regras
+- Hardening básico de segurança
+- Governança de código
+- Preparação para CI/CD e observabilidade
 
-#### 1. **Header**
-- Título com animação fadeInSlideDown
-- Badges do GitHub (followers, stars, profile views)
-- Ícones sociais com hover effects elegantes
-- Descrição inspiradora
-
-#### 2. **Sobre Mim**
-- Missão, experiência e aprendizado
-- Organizado com bullets descritivos
-- Layout limpo e hierárquico
-
-#### 3. **Linguagens e Ferramentas**
-Organizadas por **4 categorias**:
-- 🔧 **Backend**: Python, Flask, PostgreSQL
-- 🎨 **Frontend**: HTML5, CSS3, JavaScript
-- ⚙️ **DevOps & Tools**: Git, VSCode
-- 🤖 **AI Tools**: Gemini, OpenAI, Perplexity, Grok, Copilot
-
-Todos com **hover effects**: scale(1.2) + drop-shadow
-
-#### 4. **Estatísticas & Linguagens**
-- 4 cards com bordas coloridas (vermelho, ciano, roxo, lavanda)
-- GitHub Stats, Top Languages, Top Repository, Contributions
-- Labels descritivos com emojis
-- Hover effects com lift + sombra colorida
-- Animações fadeInSlideUp com delays progressivos
-
-#### 5. **Aprendizados & Inspiração**
-- Blockquote elegante com citação inspiradora
-- Design minimalista
-
-#### 6. **Footer**
-- Design minimalista e clean
-- 3 colunas: Projeto, Social, Info
-- Links com hover effects
-- Stack de tecnologias (Next.js • React • Vercel)
-- Versão do site (v1.0)
+É um projeto orientado à evolução contínua.
 
 ---
 
-## 🏗️ Estrutura do Projeto
-pages/
-├── index.js # Página principal do portfólio
-└── _app.js # Configuração Next.js
+# 2. Stack Tecnológica
 
-public/
-└── (assets estáticos)
+Frontend:
+- Next.js
+- React
 
-.gitignore
-package.json
-README.md
+Backend / API:
+- Next.js API Routes
+- AWS SDK v3
 
----
+Cloud:
+- AWS S3 (armazenamento de assets)
+- AWS DynamoDB (controle de acesso / whitelist)
 
-## 🚀 Stack de Tecnologias
+Autenticação:
+- NextAuth
+- Google OAuth
 
-- **Framework**: [Next.js](https://nextjs.org)
-- **Library**: [React](https://react.dev)
-- **Hosting**: [Vercel](https://vercel.com)
-- **Styling**: CSS-in-JS (Inline Styles)
-- **Icons**: [Devicon](https://devicons.dev), [UXWing](https://uxwing.com), [SVGRepo](https://svgrepo.com)
-
----
-
-## 📦 Como Rodar Localmente
-
-### Pré-requisitos
-- Node.js 16+ instalado
-- npm ou yarn
-
-### Instalação
-
-```bash
-# Clone o repositório
-git clone https://github.com/patocg/firstproject.git
-
-# Entre no diretório
-cd firstproject
-
-# Instale as dependências
-npm install
-
-# Rode o servidor de desenvolvimento
-npm run dev
-Acesse http://localhost:3000 no navegador.
-
-🎯 Melhorias da v1.0
-✅ Novo Design
-Redesign completo com paleta moderna
-
-Fundo cinza em vez do branco puro
-
-Melhor hierarquia visual
-
-✅ Animações
-Fade in + slide up/down na entrada
-
-Scale effect nos ícones
-
-Delays progressivos para efeito cascata
-
-✅ Seções Refatoradas
-Linguagens: Agora com 4 categorias organizadas
-
-Estatísticas: 4 cards coloridos com labels
-
-Header: Animações suaves nos elementos
-
-✅ Novos Recursos
-Ícones de AI Tools (Gemini, OpenAI, Perplexity, Grok, Copilot)
-
-Footer minimalista e moderno
-
-Hover effects em todos os elementos interativos
-
-✅ Removido
-Seção de Destaques do Instagram (CORS issues em produção)
-
-🎨 Paleta de Cores
-Cor	Código	Uso
-Cinza Claro	#e5e5e5	Fundo principal
-Branco	#fff	Cards e seções
-Cinza Escuro	#333	Texto principal
-Vermelho	#FF6B6B	Bordas, hover effects
-Ciano	#4ECDC4	Bordas, destaque
-Roxo	#6C5CE7	Bordas, destaque
-Lavanda	#A29BFE	Bordas, destaque
+DevOps:
+- Vercel (deploy)
+- GitHub (versionamento)
+- Jest (testes)
+- ESLint + Prettier
 
 ---
 
-/* Fade In + Slide Down */
-@keyframes fadeInSlideDown {
-  from { opacity: 0; transform: translateY(-30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+# 3. Arquitetura
 
-/* Fade In + Slide Up */
-@keyframes fadeInSlideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+Estrutura atual:
+- `components/` → Componentes reutilizáveis
+- `lib/` → Camada de acesso a dados e utilitários
+- `pages/` → Rotas e API handlers
+- `public/` → Assets estáticos
+- `tests/` → Testes automatizados
+- `docs/` → Documentação técnica`
 
-/* Fade In + Scale */
-@keyframes fadeInScale {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
-}
-📱 Responsividade
-✅ Mobile first approach
 
-✅ Breakpoints otimizados
+Separação de responsabilidades:
 
-✅ Touch-friendly interactive elements
+- UI desacoplada da lógica
+- APIs isoladas
+- Acesso a dados centralizado em `lib/`
+- Regras de autorização documentadas formalmente
 
-✅ Testes em diferentes resoluções
+---
 
-🔗 Links Úteis
-🌐 Site Live: https://jnths.com.br
+# 4. Controle de Acesso
 
-💼 LinkedIn: https://linkedin.com/in/jonathas-lima-cunha-60070839/
+Sistema baseado em whitelist armazenada no DynamoDB.
 
-📧 GitHub: https://github.com/patocg
+Regras principais:
 
-🐦 Instagram: https://www.instagram.com/jonathas.cunha/
+- Usuário autenticado via Google
+- Verificação de status ativo
+- Permissão específica para visualização de álbuns
+- OWNER_EMAIL definido por variável de ambiente
 
-📝 Commits Principais
-feat: adiciona 5 cards de estatísticas
+Documentação completa:
+- docs/PERMISSIONS.md
+- docs/ADMIN_PAINEL.md
 
-style: refatora seção de Linguagens e Ferramentas
+---
 
-style: adiciona animações e hover effects na seção inicial
+# 5. Segurança Implementada
 
-feat: adiciona footer minimalista e moderno
+- Security headers HTTP
+- Rate limiting nas rotas de API
+- Mascaramento de dados sensíveis em logs
+- Separação por ambiente via variáveis
+- Remoção de console logs em produção
+- Logging estruturado
 
-📊 Estatísticas
-GitHub Followers
-GitHub Stars
-Profile Views
+Próximas evoluções planejadas:
+- CSP mais restritivo
+- Monitoramento de vulnerabilidades automatizado
+- Observabilidade com logs persistentes
 
-💬 Feedback
-Gostou do projeto? Deixe uma ⭐ no repositório!
+---
 
-📄 License
-Este projeto está sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
+# 6. Testes
 
-👨‍💻 Autor
-Jonathas Cunha
+Executar testes:
+- `npm test`
 
-📍 Campo Grande, MS - Brasil
+Meta de cobertura:
+70% (em evolução para 80%)
 
-🟢 Disponível para projetos
+Inclui:
+- Testes unitários de componentes críticos
+- Testes de integração de APIs
 
-💻 Desenvolvedor Full-Stack | Cloud Infrastructure | Automação
+---
 
-<div align="center">
-Feito com 💻 por Jonathas Cunha
+# 7. Desenvolvimento Local
 
-v1.0 • 2025 • Next.js • React • Vercel
+Instalação:
+- `npm istall`
 
-</div> ```
+Rodar em ambiente de desenvolvimento:
+- `npm run dev`
+
+
+Build para produção:
+- `npm run build`
+
+
+---
+
+# 8. Workflow de Branches
+
+Modelo adotado:
+
+- main → Produção
+- develop → Homologação
+- feature/* → Novas funcionalidades
+- fix/* → Correções
+- refactor/* → Melhorias estruturais
+
+Commits seguem padrão Conventional Commits.
+
+Exemplo:
+- `feat(auth)`: implementa validação de whitelist
+- `fix(api)`: corrige tratamento de erro no S3
+- `refactor(logging)`: remove console.log em produção
+
+
+---
+
+# 9. CI/CD e Automação
+
+Pipeline em evolução para incluir:
+
+- Lint obrigatório
+- Testes automatizados
+- Build validado
+- Security scan
+- Deploy automático em main
+
+Objetivo:
+Nenhum merge com falha de pipeline.
+
+---
+
+# 10. Roadmap
+
+O roadmap estratégico completo está disponível em:
+
+ROADMAP.md
+
+Foco atual:
+
+1. Aumento de cobertura de testes
+2. CI/CD completo
+3. TypeScript progressivo
+4. Modularização por domínio
+5. Observabilidade e monitoramento
+
+Meta de maturidade técnica: 8.5+/10
+
+---
+
+# 11. Performance e Qualidade
+
+Metas de qualidade:
+
+- Lighthouse Performance > 90
+- Accessibility > 95
+- Best Practices > 95
+- SEO > 90
+
+---
+
+# 12. Licença
+
+Licença a ser definida (recomendado: MIT).
+
+---
+
+# 13. Posicionamento Técnico
+
+Este projeto demonstra:
+
+- Capacidade de integrar frontend e backend
+- Experiência com AWS
+- Mentalidade DevOps
+- Governança de código
+- Evolução arquitetural contínua
+- Preocupação com segurança
+
+Não é apenas um site.
+É um estudo contínuo de engenharia aplicada.
+
+---
+
+# 14. Próxima Revisão Técnica
+
+Revisão estratégica prevista para:
+03/04/2026
+
+Objetivo:
+Avaliar evolução da cobertura de testes, pipeline CI/CD e hardening.
+
+---
