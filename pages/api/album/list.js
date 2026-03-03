@@ -5,6 +5,8 @@ import {
 } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
+import { logger } from '../../../lib/logger';
+
 const region = process.env.AWS_REGION;
 const bucket = process.env.AWS_S3_BUCKET;
 const prefix = process.env.AWS_S3_ALBUM_PREFIX || "album/";
@@ -23,7 +25,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.log("Listing S3 objects from bucket:", bucket, "prefix:", prefix);
+    logger.debug(`Listing S3: bucket=${bucket}, prefix=${prefix}`);
 
     const command = new ListObjectsV2Command({
       Bucket: bucket,
@@ -31,7 +33,7 @@ export default async function handler(req, res) {
     });
 
     const data = await s3.send(command);
-    console.log("S3 ListObjectsV2 result:", JSON.stringify(data, null, 2));
+    logger.debug(`S3 result: ${data.Contents?.length || 0} objetos`);
 
     const contents = data.Contents || [];
 
@@ -61,7 +63,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ items });
   } catch (error) {
-    console.error("Error listing S3 album:", error);
+    logger.error(`Erro ao listar álbum S3: ${error.message}`);
     return res.status(500).json({ error: "Failed to list album" });
   }
 }

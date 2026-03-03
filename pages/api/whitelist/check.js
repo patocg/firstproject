@@ -6,6 +6,7 @@ import { GetCommand } from "@aws-sdk/lib-dynamodb";
 import { ddb } from "../../../lib/dynamo";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
+import { logger, maskEmail } from '../../../lib/logger';
 
 const TABLE = process.env.DYNAMO_TABLE_WHITELIST;
 // Sempre ler do .env (server-side)
@@ -53,12 +54,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    console.info(
-      "[Whitelist:check] Consultando email:",
-      email,
-      "na tabela:",
-      TABLE
-    );
+    logger.debug(`Consultando whitelist para: ${maskEmail(email)}`);
 
     const command = new GetCommand({
       TableName: TABLE,
@@ -100,10 +96,11 @@ export default async function handler(req, res) {
       permissions,
     });
   } catch (err) {
-    console.error("[Whitelist:check] Erro ao checar whitelist", err);
+    logger.error(`Erro ao checar whitelist: ${err.message}`);
+
     return res.status(500).json({
       error: "Erro ao checar whitelist",
       details: err.message || String(err),
     });
-  }
+  };
 }
