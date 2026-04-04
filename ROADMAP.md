@@ -1,20 +1,19 @@
-# FIRSTPROJECT – ROADMAP ESTRATÉGICO v3.0
-Atualizado em: 03/03/2026
-Autor: jonathas Cunha (Cursando Engenharia de Software - 7° SEM)
+# FIRSTPROJECT – ROADMAP ESTRATÉGICO v4.0
+Atualizado em: 04/04/2026
+Autor: Jonathas Cunha (Cursando Engenharia de Software - 7° sem.)
 
 ---
 
-# 1. VISÃO ESTRATÉGICA
+## 1. Visão Estratégica
 
-Objetivo do projeto:
 Consolidar o firstproject como um portfólio técnico de alto nível, com arquitetura escalável, segurança robusta, automação completa e governança madura.
 
-Meta de maturidade:
-Elevar o projeto do nível atual (~6.8/10) para 8.5+ em critérios profissionais de engenharia.
+**Score de maturidade atual: ~7.5/10**
+Meta: 8.5+/10
 
 ---
 
-# 2. EIXOS DE EVOLUÇÃO
+## 2. Eixos de Evolução
 
 1. Confiabilidade (Testes + CI)
 2. Governança (Padrões + Workflow)
@@ -25,154 +24,146 @@ Elevar o projeto do nível atual (~6.8/10) para 8.5+ em critérios profissionais
 
 ---
 
-# 3. FASE 1 – ESTABILIZAÇÃO (2–3 semanas)
+## 3. Fase 1 – Estabilização
 
-## 3.1 Testes Automatizados (Prioridade Crítica)
+### 3.1 Testes Automatizados — CONCLUÍDO
 
-- Expandir testes unitários (componentes críticos)
-- Testes de integração nas APIs
-- Cobertura mínima obrigatória: 75%
-- Adicionar relatório de coverage no CI
-- Fail build se coverage < 70%
+- [x] Testes unitários de componentes críticos
+- [x] Testes de integração nas APIs (add-photo, upload-url, delete, whitelist/check)
+- [x] Testes de segurança (NoSecrets, NoHardcoded)
+- [x] Testes de lib (listPhotosByAlbum com paginação e soft delete)
+- [x] 75 testes passando em 14 suites
+- [x] `.env.test` com valores fake — sem hardcode no código
+- [ ] Relatório de coverage no CI
+- [ ] Fail build se coverage < 70%
 
-Critério de aceite:
-Pipeline bloqueia merge se testes falharem.
-
----
-
-## 3.2 CI Completo (GitHub Actions)
+### 3.2 CI Completo (GitHub Actions) — PENDENTE (issue #8)
 
 Pipeline obrigatório:
-
+```
 lint → test → build → security scan
+```
 
-Ferramentas:
+Ferramentas planejadas:
 - ESLint
-- Prettier
 - Jest
 - npm audit
 - Dependabot
 
-Critério de aceite:
-PR não pode ser mergeado se pipeline falhar.
+Critério de aceite: PR não pode ser mergeado se pipeline falhar.
+
+### 3.3 Padronização de Commits — PENDENTE (issue #10)
+
+- [ ] Commitlint
+- [ ] Husky (pre-commit e commit-msg)
+
+Conventional Commits já é adotado — falta automação da validação.
 
 ---
 
-## 3.3 Padronização de Commits
+## 4. Fase 2 – Arquitetura e Banco
 
-- Commitlint
-- Husky (pre-commit e commit-msg)
-- Conventional Commits obrigatório
-
----
-
-# 4. FASE 2 – ARQUITETURA E BANCO (3–4 semanas)
-
-## 4.1 Estrutura por Domínio
+### 4.1 Estrutura por Domínio
 
 Migrar de estrutura técnica para estrutura por feature:
 
+```
 /features
   /auth
   /albums
   /admin
   /api
+```
 
-Separação clara:
-- domain
-- services
-- infra
-- presentation
+Separação clara: domain / services / infra / presentation.
 
----
-
-## 4.2 Banco de Dados Estruturado
+### 4.2 Banco de Dados Estruturado
 
 Atualmente: DynamoDB + S3
 
-Evolução recomendada:
+Evolução planejada:
 - Definir padrão definitivo (manter NoSQL ou migrar para PostgreSQL)
 - Implementar migrations formais
-- Separar ambientes:
-  - dev
-  - staging
-  - production
+- Separar ambientes: dev / staging / production
+
+### 4.3 TypeScript Progressivo
+
+- [ ] Converter arquivos críticos primeiro
+- [ ] Tipar API responses
+- [ ] Tipar modelos de dados
+- [ ] Ativar strict mode
 
 ---
 
-## 4.3 TypeScript Progressivo
+## 5. Fase 3 – Segurança Avançada
 
-- Converter arquivos críticos primeiro
-- Tipar API responses
-- Tipar modelos de dados
-- Ativar strict mode
+### 5.1 Hardening — PARCIALMENTE CONCLUÍDO
 
----
+- [x] Controle de acesso granular por permissão (canUploadPhotos, canDeletePhotos)
+- [x] OWNER_EMAIL via variável de ambiente
+- [x] Testes automatizados contra hardcode e vazamento de segredos
+- [x] Security headers HTTP
+- [x] Rate limiting nas APIs
+- [ ] CSP estrito
+- [ ] Sanitização de inputs
+- [ ] Rate limit granular por endpoint (deferred — issue aberta)
+- [ ] Logs estruturados persistentes (Pino ou Winston)
 
-# 5. FASE 3 – SEGURANÇA AVANÇADA (2–3 semanas)
+### 5.2 Monitoramento
 
-## 5.1 Hardening
-
-- CSP estrito
-- Sanitização de inputs
-- Rate limit granular por endpoint
-- Logs estruturados (Pino ou Winston)
-- Masking obrigatório de dados sensíveis
-
----
-
-## 5.2 Monitoramento
-
-- Sentry para erros
-- Vercel Analytics
-- Uptime monitor
-- Logs estruturados persistentes
+- [ ] Sentry para erros
+- [ ] Vercel Analytics
+- [ ] Uptime monitor
 
 ---
 
-# 6. FASE 4 – EXPERIÊNCIA DE CONTRIBUIÇÃO
+## 6. Fase 4 – Experiência de Contribuição — PARCIALMENTE CONCLUÍDO
 
-- CONTRIBUTING.md completo
-- CODE_OF_CONDUCT.md
-- LICENSE (MIT)
-- Templates de Issue e PR
-- Roadmap público atualizado
+- [x] README.md completo
+- [x] CONTRIBUTING.md
+- [x] ROADMAP.md
+- [x] CHANGELOG.md
+- [x] CLAUDE.md
+- [ ] CODE_OF_CONDUCT.md
+- [ ] LICENSE (MIT formal)
+- [ ] Templates de Issue e PR no GitHub
 
 ---
 
-# 7. FASE 5 – QUALIDADE VISÍVEL
+## 7. Fase 5 – Qualidade Visível
 
-Adicionar badges no README:
+Badges no README:
 
-- Build passing
-- Coverage
-- License
-- Last commit
-- Deploy status
+- [ ] Build passing (GitHub Actions)
+- [ ] Coverage
+- [ ] License
+- [ ] Last commit
+- [ ] Deploy status (Vercel)
 
 Meta Lighthouse:
-Performance > 90
-Accessibility > 95
-Best Practices > 95
-SEO > 90
+
+| Métrica | Meta |
+|---|---|
+| Performance | > 90 |
+| Accessibility | > 95 |
+| Best Practices | > 95 |
+| SEO | > 90 |
 
 ---
 
-# 8. MÉTRICAS DE MATURIDADE
+## 8. Métricas de Maturidade
 
-Objetivo final:
-
-| Dimensão | Meta |
-|----------|------|
-| Testes | 80% coverage |
-| CI/CD | 100% automatizado |
-| Segurança | Zero high vulnerabilities |
-| Documentação | 100% dos fluxos críticos documentados |
-| Tipagem | 80% do projeto em TypeScript |
+| Dimensão | Estado atual | Meta |
+|---|---|---|
+| Testes | 75 testes, ~14 suites | 80% coverage |
+| CI/CD | Pendente | 100% automatizado |
+| Segurança | Permissões granulares, sem hardcode | Zero high vulnerabilities |
+| Documentação | README, ROADMAP, CHANGELOG, CLAUDE.md | 100% dos fluxos críticos |
+| Tipagem | JavaScript | 80% em TypeScript |
 
 ---
 
-# 9. VISÃO DE LONGO PRAZO
+## 9. Visão de Longo Prazo
 
 - Transformar projeto em referência técnica pública
 - Publicar artigos técnicos baseados nele
@@ -181,10 +172,9 @@ Objetivo final:
 
 ---
 
-# 10. CONCLUSÃO
+## 10. Conclusão
 
 O projeto já demonstra maturidade crescente.
-O foco agora não é adicionar features.
-É consolidar engenharia.
+O foco agora não é adicionar features — é consolidar engenharia.
 
-Disciplina técnica agora garantirá minha liberdade no futuro.
+Disciplina técnica agora garantirá liberdade no futuro.
