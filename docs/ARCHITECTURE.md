@@ -227,7 +227,7 @@ erDiagram
 
     ACESS_DENIED_LOGS {
         string email PK
-        string timestamp SK
+        string timestamp
         string reason
     }
 
