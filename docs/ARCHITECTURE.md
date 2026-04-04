@@ -222,13 +222,13 @@ erDiagram
         string s3Key
         string uploadedAt
         string uploadedBy
-        string deletedAt "null = ativa"
+        string deletedAt
     }
 
     ACESS_DENIED_LOGS {
         string email PK
         string timestamp SK
-        string reason "NOT_IN_WHITELIST"
+        string reason
     }
 
     WHITELIST ||--o{ PHOTOS : "usuário faz upload"
