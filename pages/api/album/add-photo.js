@@ -1,14 +1,40 @@
 // pages/api/album/add-photo.js
 
-import { PutCommand } from "@aws-sdk/lib-dynamodb";
-import { ddb } from "../../../lib/dynamo"; // ajuste o caminho conforme seu projeto
+import { GetCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]";
+import { ddb } from "../../../lib/dynamo";
 
 const TABLE = process.env.DYNAMO_TABLE_PHOTOS;
+const OWNER_EMAIL = process.env.OWNER_EMAIL || "";
+const WHITELIST_TABLE = process.env.DYNAMO_TABLE_WHITELIST;
 
 export default async function handler(req, res) {
   // Só aceita POST
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
+  }
+
+  const session = await getServerSession(req, res, authOptions);
+  if (!session?.user?.email) {
+    return res.status(401).json({ error: "Not authenticated" });
+  }
+
+  const email = session.user.email.toLowerCase();
+  const isOwner = OWNER_EMAIL && email === OWNER_EMAIL.toLowerCase();
+
+  if (!isOwner) {
+    try {
+      const wl = await ddb.send(new GetCommand({
+        TableName: WHITELIST_TABLE,
+        Key: { email },
+      }));
+      if (!wl?.Item?.canUploadPhotos) {
+        return res.status(403).json({ error: "Not allowed" });
+      }
+    } catch {
+      return res.status(403).json({ error: "Not allowed" });
+    }
   }
 
   try {

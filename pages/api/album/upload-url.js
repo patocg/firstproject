@@ -8,6 +8,9 @@ import { authOptions } from "../auth/[...nextauth]";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
+import { GetCommand } from "@aws-sdk/lib-dynamodb";
+import { ddb } from "../../../lib/dynamo";
+
 // 🔧 Lê configurações do S3 a partir das variáveis de ambiente
 //    IMPORTANTE: essas envs precisam estar definidas tanto em .env.local (dev)
 //    quanto nas Environment Variables da Vercel (Production).
@@ -16,8 +19,8 @@ const BUCKET = process.env.AWS_S3_BUCKET;
 // Prefixo padrão para chaves no bucket (caso o front não envie s3Key explícito)
 const PREFIX = process.env.AWS_S3_ALBUM_PREFIX || "album/";
 
-// 🔐 Somente este e-mail poderá gerar URLs de upload
-const ALLOWED_EMAIL = "jonathas.lima.cunha@gmail.com";
+const OWNER_EMAIL = process.env.OWNER_EMAIL || "";
+const WHITELIST_TABLE = process.env.DYNAMO_TABLE_WHITELIST;
 
 // ✅ Cliente S3 usado apenas no backend (API routes)
 //    Aqui usamos credenciais via env (IAM user/role com permissão no bucket).
@@ -64,11 +67,23 @@ export default async function handler(req, res) {
     return res.status(401).json({ error: "Not authenticated" });
   }
 
-  // 🔐 Compara email logado com o dono (case-insensitive para evitar ruído)
   const userEmail = session.user.email.toLowerCase();
-  if (userEmail !== ALLOWED_EMAIL.toLowerCase()) {
-    console.warn("[UploadURL] Acesso negado para:", userEmail);
-    return res.status(403).json({ error: "Not allowed" });
+  const isOwner = OWNER_EMAIL && userEmail === OWNER_EMAIL.toLowerCase();
+
+  if (!isOwner) {
+    try {
+      const wl = await ddb.send(new GetCommand({
+        TableName: WHITELIST_TABLE,
+        Key: { email: userEmail },
+      }));
+      if (!wl?.Item?.canUploadPhotos) {
+        console.warn("[UploadURL] Acesso negado para:", userEmail);
+        return res.status(403).json({ error: "Not allowed" });
+      }
+    } catch {
+      console.warn("[UploadURL] Erro ao verificar permissão para:", userEmail);
+      return res.status(403).json({ error: "Not allowed" });
+    }
   }
 
   // 📦 Lê dados enviados pelo front:
