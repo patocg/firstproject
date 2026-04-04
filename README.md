@@ -87,8 +87,9 @@ Permissões granulares por usuário:
 O `OWNER_EMAIL` é definido exclusivamente via variável de ambiente — nunca hardcoded no código.
 
 Documentação completa:
-- `docs/PERMISSIONS.md`
-- `docs/ADMIN_PAINEL.md`
+- `docs/ARCHITECTURE.md` — diagramas completos da arquitetura
+- `docs/PERMISSIONS.md` — matriz de permissões detalhada
+- `docs/ADMIN_PAINEL.md` — documentação do painel admin
 
 ---
 
