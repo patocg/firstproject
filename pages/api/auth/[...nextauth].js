@@ -53,6 +53,8 @@ function checkLoginRateLimit(email) {
 // ===================================================================
 // CONFIGURAÇÃO DO NEXTAUTH
 // ===================================================================
+const OWNER_EMAIL = process.env.OWNER_EMAIL || "";
+
 export const authOptions = {
   // Provedores de autenticação disponíveis (por enquanto, apenas Google)
   providers: [
@@ -89,7 +91,6 @@ export const authOptions = {
       }
 
       const email = user.email.toLowerCase();
-      const OWNER_EMAIL = "jonathas.lima.cunha@gmail.com";
 
       // 2) Dono sempre tem acesso (bypass de whitelist)
       //    Isso garante que você sempre consegue entrar para manutenção,

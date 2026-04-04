@@ -152,17 +152,5 @@ export default async function handler(req, res) {
             error: "Erro ao listar álbuns",
             details: err.message || String(err),
         });
-        // ====================================================================
-        // TRATAMENTO DE ERROS
-        // ====================================================================
-        // Loga o erro no servidor (aparece nos logs da Vercel/CloudWatch)
-        console.error("Erro ao listar álbuns:", err);
-        
-        // Retorna erro 500 para o cliente com detalhes
-        // Em produção, evite expor detalhes internos do erro
-        return res.status(500).json({
-            error: "Erro ao listar álbuns",
-            details: err.message || String(err),
-        });
     }
 }

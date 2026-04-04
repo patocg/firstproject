@@ -37,20 +37,20 @@ export default async function handler(req, res) {
   try {
     console.info("[Whitelist:list] Fazendo Scan na tabela:", TABLE);
 
-    const command = new ScanCommand({
-      TableName: TABLE,
-    });
+    let items = [];
+    let lastKey = undefined;
+    do {
+      const data = await ddb.send(new ScanCommand({
+        TableName: TABLE,
+        ExclusiveStartKey: lastKey,
+      }));
+      items = items.concat(data.Items || []);
+      lastKey = data.LastEvaluatedKey;
+    } while (lastKey);
 
-    const data = await ddb.send(command);
+    console.info("[Whitelist:list] Itens encontrados:", items.length);
 
-    console.info(
-      "[Whitelist:list] Itens encontrados:",
-      data.Items ? data.Items.length : 0
-    );
-
-    return res.status(200).json({
-      items: data.Items || [],
-    });
+    return res.status(200).json({ items });
   } catch (err) {
     console.error("[Whitelist:list] Erro ao listar whitelist", err);
     return res.status(500).json({

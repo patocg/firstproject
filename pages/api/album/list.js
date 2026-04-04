@@ -9,7 +9,7 @@ import { logger } from '../../../lib/logger';
 
 const region = process.env.AWS_REGION;
 const bucket = process.env.AWS_S3_BUCKET;
-const prefix = process.env.AWS_S3_ALBUM_PREFIX || "album/";
+const prefix = process.env.AWS_S3_ALBUM_PREFIX || "albuns/";
 
 const s3 = new S3Client({
   region,

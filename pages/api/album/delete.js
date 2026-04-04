@@ -1,13 +1,14 @@
 import { getServerSession } from "next-auth";
 import { S3Client, DeleteObjectCommand } from "@aws-sdk/client-s3";
-import { UpdateCommand, QueryCommand } from "@aws-sdk/lib-dynamodb";
+import { GetCommand, UpdateCommand, QueryCommand } from "@aws-sdk/lib-dynamodb";
 import { authOptions } from "../auth/[...nextauth]";
 import { ddb } from "../../../lib/dynamo";
 
 const region = process.env.AWS_REGION;
 const bucket = process.env.AWS_S3_BUCKET;
 const TABLE = process.env.DYNAMO_TABLE_PHOTOS;
-const OWNER_EMAIL = "jonathas.lima.cunha@gmail.com";
+const OWNER_EMAIL = process.env.OWNER_EMAIL || "";
+const WHITELIST_TABLE = process.env.DYNAMO_TABLE_WHITELIST;
 
 const s3 = new S3Client({
   region,
@@ -24,12 +25,25 @@ export default async function handler(req, res) {
 
   const session = await getServerSession(req, res, authOptions);
 
-  if (
-    !session ||
-    !session.user ||
-    session.user.email.toLowerCase() !== OWNER_EMAIL.toLowerCase()
-  ) {
-    return res.status(403).json({ error: "Not allowed" });
+  if (!session?.user?.email) {
+    return res.status(401).json({ error: "Not authenticated" });
+  }
+
+  const email = session.user.email.toLowerCase();
+  const isOwner = OWNER_EMAIL && email === OWNER_EMAIL.toLowerCase();
+
+  if (!isOwner) {
+    try {
+      const wl = await ddb.send(new GetCommand({
+        TableName: WHITELIST_TABLE,
+        Key: { email },
+      }));
+      if (!wl?.Item?.canDeletePhotos) {
+        return res.status(403).json({ error: "Not allowed" });
+      }
+    } catch {
+      return res.status(403).json({ error: "Not allowed" });
+    }
   }
 
   const { key, albumCode } = req.body || {};
